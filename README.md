@@ -4,6 +4,10 @@ A community-maintained C# SDK for the provided GoDaddy OpenAPI specs.
 
 ## Installation
 
+```sh
+dotnet add package CommunitySdks.GoDaddy --version 1.0.2
+```
+
 Add the project reference or package to your solution:
 
 ```xml
