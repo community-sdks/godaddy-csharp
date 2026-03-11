@@ -16,16 +16,45 @@ Add the project reference or package to your solution:
 
 ```csharp
 using CommunitySdks.GoDaddy;
+using CommunitySdks.GoDaddy.Dto.Domains.Requests;
 
 var client = new Client(new Config
 {
+  BaseUrl = "https://api.ote-godaddy.com",
     ApiKey = "your-api-key",
     ApiSecret = "your-api-secret"
 });
 
-var response = await client.Domains().TldsAsync();
-Console.WriteLine(response?.ToJsonString());
+var response = await client.Domains().TldsAsync(
+  new TldsAsyncRequest()
+);
+
+Console.WriteLine(response.Raw?.ToJsonString());
 ```
+
+## DTO-First Usage
+
+Service methods accept typed request DTOs and return typed response DTO wrappers.
+
+```csharp
+using CommunitySdks.GoDaddy.Dto.Abuse.Requests;
+
+var created = await client.Abuse().CreateTicketV2Async(
+  new CreateTicketV2AsyncRequest(
+    Body: new CreateTicketV2Body(
+      Source: "https://malicious.example/phish",
+      Type: "PHISHING",
+      Target: "Example Bank",
+      Useragent: "DESKTOP",
+      Proxy: "USA"
+    )
+  )
+);
+
+Console.WriteLine(created.Raw?.ToJsonString());
+```
+
+Use `https://api.godaddy.com` for production.
 
 ## Services
 
