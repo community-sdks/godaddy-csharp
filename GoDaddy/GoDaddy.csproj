@@ -3,9 +3,17 @@
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+
     <RootNamespace>CommunitySdks.GoDaddy</RootNamespace>
     <AssemblyName>CommunitySdks.GoDaddy</AssemblyName>
     <PackageId>CommunitySdks.GoDaddy</PackageId>
     <Description>Community GoDaddy SDK for C#</Description>
+
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md" Pack="true" PackagePath="\" Link="README.md" />
+    <None Include="..\docs\**\*.*" Pack="true" PackagePath="docs\" />
+  </ItemGroup>
 </Project>
