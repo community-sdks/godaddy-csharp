@@ -9,6 +9,7 @@
     <PackageId>CommunitySdks.GoDaddy</PackageId>
     <Description>Community GoDaddy SDK for C#</Description>
 
+    <Version>1.0.1</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
