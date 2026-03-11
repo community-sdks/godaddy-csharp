@@ -1,12 +1,10 @@
 # AgreementsService
 
-Agreement retrieval endpoints for legal terms and consent workflows.
+Client accessor: `client.Agreements()`
 
-## Accessor
+## Method Index
 
-```csharp
-var service = client.Agreements();
-```
+- [`GetAsync`](#getasync)
 
 ## Endpoints
 
@@ -15,10 +13,22 @@ var service = client.Agreements();
 Calls `GET /v1/agreements`.
 
 ```csharp
-var response = await client.Agreements().GetAsync(new[] { "sample" }, "header-value", "header-value");
+var response = await client.Agreements().GetAsync(
+    new GetAsyncRequest(
+        XPrivateLabelId: 1,
+        XMarketId: "en-US",
+        Keys: new[] { "value" }
+    )
+);
 ```
 
 ```json
-{}
+[
+  {
+    "agreementKey": "example",
+    "content": "example",
+    "title": "example",
+    "url": "example"
+  }
+]
 ```
-

@@ -1,12 +1,11 @@
 # CountriesService
 
-Country and market metadata endpoints used across purchase flows.
+Client accessor: `client.Countries()`
 
-## Accessor
+## Method Index
 
-```csharp
-var service = client.Countries();
-```
+- [`GetCountriesAsync`](#getcountriesasync)
+- [`GetCountryAsync`](#getcountryasync)
 
 ## Endpoints
 
@@ -15,11 +14,21 @@ var service = client.Countries();
 Calls `GET /v1/countries`.
 
 ```csharp
-var response = await client.Countries().GetCountriesAsync("sample");
+var response = await client.Countries().GetCountriesAsync(
+    new GetCountriesAsyncRequest(
+        MarketId: "example"
+    )
+);
 ```
 
 ```json
-{}
+[
+  {
+    "callingCode": "example",
+    "countryKey": "example",
+    "label": "example"
+  }
+]
 ```
 
 ### GetCountryAsync
@@ -27,10 +36,23 @@ var response = await client.Countries().GetCountriesAsync("sample");
 Calls `GET /v1/countries/{countryKey}`.
 
 ```csharp
-var response = await client.Countries().GetCountryAsync("sample", "sample");
+var response = await client.Countries().GetCountryAsync(
+    new GetCountryAsyncRequest(
+        CountryKey: "example",
+        MarketId: "example"
+    )
+);
 ```
 
 ```json
-{}
+[
+  {
+    "callingCode": "example",
+    "countryKey": "example",
+    "label": "example",
+    "states": [
+      {}
+    ]
+  }
+]
 ```
-
